@@ -16,3 +16,9 @@ connect to the corresponding database
 run the command in POSTGRES
 `COPY public."Related" FROM '/Users/danielkim/HR/SDC/transformed-data/transformedrelated.csv' WITH DELIMITER '|' CSV HEADER;`
 CSV HEADER IS ONLY IF THERE IS A HEADER FOR COLUMN NAMES
+
+NEED TO RUN INDEXES ON THE DATABASE
+
+create index photo_style on public."Photos" ("styleId");  
+create index product_style on public."Styles" ("productId");
+create index sku_style on public."SKUs" ("styleId");

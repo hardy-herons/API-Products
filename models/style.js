@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       default_style: DataTypes.INTEGER
     },
-    {}
+    { timestamps: false }
   );
   Style.associate = function(models) {
     // associations can be defined here
