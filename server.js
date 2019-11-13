@@ -28,7 +28,7 @@ app.get("/products/:product_id", async (req, res) => {
   }
 });
 
-/* style_id, name, original_price, sale_price, default, photos[{}], skus*/
+/* style_id, name, original_price, sale_price, default, photos[{}], skus{}*/
 app.get("/products/:product_id/styles", async (req, res) => {
   try {
     const results = {

@@ -1,0 +1,29 @@
+# docker-compose.yml
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://danielkim@postgres:5432/products
+      NODE_ENV: container
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    command: npm start
+    volumes:
+      - .:/app/
+      - /app/node_modules
+
+  postgres:
+    image: postgres:10.4
+    ports:
+      - "35432:5432"
+    environment:
+      POSTGRES_USER: danielkim
+      POSTGRES_PASSWORD: null
+      POSTGRES_DB: products
+      PGDATA: /tmp
+    volumes:
+      - ./transformed-data:/var/lib/postgresql/data/pgdata
