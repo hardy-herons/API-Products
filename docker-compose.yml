@@ -1,11 +1,18 @@
 # docker-compose.yml
 version: "3"
 services:
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
   app:
     build: .
     depends_on:
+      - redis
       - postgres
     environment:
+      REDIS_URL: redis://cache
       DATABASE_URL: postgres://danielkim@postgres:5432/products
       NODE_ENV: container
       PORT: 3000
